@@ -37,7 +37,20 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav me-auto">
-
+                            @if (auth()->user()->username == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::routeIs('bon') ? 'active' : '' }}" aria-current="page" href="{{ route('bon') }}">Bon</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::routeIs('libur') ? 'active' : '' }}" aria-current="page" href="{{ route('libur') }}">Libur</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::routeIs('transaksi') ? 'active' : '' }}" aria-current="page" href="{{ route('transaksi') }}">Transaksi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::routeIs('laporan') ? 'active' : '' }}" aria-current="page" href="{{ route('laporan') }}">Laporan</a>
+                            </li>
+                            @endif
                         </ul>
 
                         <!-- Right Side Of Navbar -->

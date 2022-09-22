@@ -1,6 +1,4 @@
 <div>
-    @if (auth()->user()->username != 'admin')
-        
     <x-card class="col-md-4">
         <div class="col-md-6">
             <label for="bulan" class="form-label">Pilih Bulan</label>
@@ -20,12 +18,21 @@
                 <option value="12">{{ namaBulan(12) }}</option>
             </select>
         </div>
+        <div class="col-md-6">
+            <label for="pegawai" class="form-label">Pegawai</label>
+            <select wire:model="pegawai" id="pegawai" class="form-select">
+                <option value="1">Pilih Pegawai</option>
+                @foreach ($listPegawai as $pegawai)
+                    <option value="{{ $pegawai->id }}">{{ $pegawai->name }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Nama</th>
-                        <th>: {{ ucwords(auth()->user()->name) }}</th>
+                        <th>: {{ $namaPegawai }}</th>
                     </tr>
                     <tr>
                         <th>Bulan</th>
@@ -43,7 +50,7 @@
                         <th>Total Pemasukan</th>
                         <th>: {{ rupiah($totalPemasukan) }}</th>
                     </tr>
-                    @if (auth()->user()->name == 'Fendi')
+                    @if ($namaPegawai == 'Fendi')
                     <tr>
                         <th>Total Pendapatan</th>
                         <th>: {{ rupiah($totalPendapatan) }}</th>
@@ -77,5 +84,4 @@
             </table>
         </div>
     </x-card>
-    @endif
 </div>

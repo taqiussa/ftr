@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Bon;
 use App\Http\Livewire\Home;
+use App\Http\Livewire\Laporan;
 use App\Http\Livewire\Libur;
 use App\Http\Livewire\Transaksi;
 use Illuminate\Support\Facades\Auth;
@@ -19,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('transaksi', Transaksi::class)->name('transaksi');
     Route::get('bon', Bon::class)->name('bon');
     Route::get('libur', Libur::class)->name('libur');
+    Route::get('laporan', Laporan::class)->name('laporan');
     Route::get('home', Home::class)->name('home');
 });
 Auth::routes();
