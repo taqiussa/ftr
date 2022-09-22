@@ -15,5 +15,8 @@ class Home extends Component
         return view('livewire.home');
     }
 
-    
+    public function mount()
+    {
+        $this->bulan = date('m');
+    }
 }
