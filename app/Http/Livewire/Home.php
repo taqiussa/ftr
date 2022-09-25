@@ -54,6 +54,6 @@ class Home extends Component
         $this->totalKupon = Transaksi::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
             ->sum('kupon');
-        $this->totalPendapatan = ($this->totalPotong + $this->totalKupon) * 13000;
+        $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 13000;
     }
 }
