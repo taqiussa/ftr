@@ -53,7 +53,7 @@ class Laporan extends Component
         $this->totalKupon = Transaksi::where('user_id', $this->pegawai)
         ->whereMonth('tanggal', $this->bulan)
         ->sum('kupon');
-        $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 13000;
+        $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 6500;
 
     }
 
