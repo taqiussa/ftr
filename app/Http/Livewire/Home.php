@@ -28,26 +28,32 @@ class Home extends Component
     public function mount()
     {
         $this->bulan = date('m');
+        $this->get_data();
     }
 
     public function updated($property)
+    {
+        $this->get_data();
+    }
+
+    private function get_data()
     {
         $this->listLibur = Libur::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
             ->get();
         $this->totalLibur = count($this->listLibur);
         $this->listBon =  Bon::where('user_id', auth()->user()->id)
-        ->whereMonth('tanggal', $this->bulan)
-        ->get();
+            ->whereMonth('tanggal', $this->bulan)
+            ->get();
         $this->totalPemasukan = Transaksi::where('user_id', auth()->user()->id)
-        ->whereMonth('tanggal', $this->bulan)
-        ->sum('total');
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('total');
         $this->totalPotong = Transaksi::where('user_id', auth()->user()->id)
-        ->whereMonth('tanggal', $this->bulan)
-        ->sum('jumlah');
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('jumlah');
         $this->totalKupon = Transaksi::where('user_id', auth()->user()->id)
-        ->whereMonth('tanggal', $this->bulan)
-        ->sum('kupon');
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('kupon');
         $this->totalPendapatan = $this->totalPemasukan + (6500 * $this->totalKupon);
     }
 }
