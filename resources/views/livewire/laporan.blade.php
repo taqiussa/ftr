@@ -62,7 +62,7 @@
                     </tr>
                     <tr>
                         <th>Total Bon</th>
-                        <th>: {{ $totalBon }}</th>
+                        <th>: {{ rupiah($totalBon) }}</th>
                     </tr>
                     <tr>
                         <th colspan="2">Keterangan Libur</th>
