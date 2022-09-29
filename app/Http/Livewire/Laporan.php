@@ -42,19 +42,20 @@ class Laporan extends Component
             ->get();
         $this->totalLibur = count($this->listLibur);
         $this->listBon =  Bon::where('user_id', $this->pegawai)
-        ->whereMonth('tanggal', $this->bulan)
-        ->get();
+            ->whereMonth('tanggal', $this->bulan)
+            ->get();
+        $this->totalBon = Bon::where('user_id', $this->pegawai)
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('total');
         $this->totalPemasukan = Transaksi::where('user_id', $this->pegawai)
-        ->whereMonth('tanggal', $this->bulan)
-        ->sum('total');
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('total');
         $this->totalPotong = Transaksi::where('user_id', $this->pegawai)
-        ->whereMonth('tanggal', $this->bulan)
-        ->sum('jumlah');
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('jumlah');
         $this->totalKupon = Transaksi::where('user_id', $this->pegawai)
-        ->whereMonth('tanggal', $this->bulan)
-        ->sum('kupon');
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('kupon');
         $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 6500;
-
     }
-
 }

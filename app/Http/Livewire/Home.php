@@ -45,6 +45,9 @@ class Home extends Component
         $this->listBon =  Bon::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
             ->get();
+        $this->totalBon = Bon::where('user_id', $this->pegawai)
+            ->whereMonth('tanggal', $this->bulan)
+            ->sum('total');
         $this->totalPemasukan = Transaksi::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
             ->sum('total');
