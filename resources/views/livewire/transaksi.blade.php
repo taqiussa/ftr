@@ -19,7 +19,7 @@
                 <select wire:model="harga" id="harga" class="form-select" >
                     <option value="">Pilih Harga</option>
                     <option value="6500">Rp. 6.500,-</option>\
-                    <option value="10000">Rp. 10.000,-</option>
+                    <option value="12000">Rp. 12.000,-</option>
                 </select>
             </div>
         </div>
