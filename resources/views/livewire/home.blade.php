@@ -70,7 +70,7 @@
                     </tr>
                     @foreach ($listBon as $bon)
                     <tr>
-                        <th colspan="2">{{ $loop->iteration }}. {{ hariTanggal($bon->tanggal) }}</th>
+                        <th colspan="2">{{ $loop->iteration }}. {{ hariTanggal($bon->tanggal) }} - {{ rupiah($bon->total) }}</th>
                     </tr>
                     @endforeach
                 </thead>
