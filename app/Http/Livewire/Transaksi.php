@@ -14,6 +14,7 @@ class Transaksi extends Component
     public $anak = 0;
     public $kupon = 0;
     public $total = 0;
+    public $jumlah;
 
     public $listPegawai = [];
     public $listTransaksi = [];
@@ -38,6 +39,7 @@ class Transaksi extends Component
         } else {
             $this->total = ($this->dewasa * 15000) + ($this->anak * 12000);
         }
+        $this->jumlah = $this->dewasa + $this->anak;
         $this->get_transaksi();
     }
     public function simpan()
