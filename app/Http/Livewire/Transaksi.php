@@ -34,7 +34,7 @@ class Transaksi extends Component
         $this->kupon ?? 0;
         $this->jumlah ?? 0;
         if ($this->pegawai == 2) {
-            $this->total = ($this->dewasa * 15000) + ($this->anak * 13000);
+            $this->total = ($this->dewasa * 7500) + ($this->anak * 6500);
         } else {
             $this->total = ($this->dewasa * 15000) + ($this->anak * 12000);
         }
