@@ -52,11 +52,13 @@ class Transaksi extends Component
                 ],
                 [
                     'jumlah' => $this->jumlah,
+                    'dewasa' => $this->dewasa,
+                    'anak' => $this->anak,
                     'kupon' => $this->kupon,
                     'total' => $this->total,
                 ]
             );
-        $this->get_transaksi();
+            $this->get_transaksi();
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -65,7 +67,6 @@ class Transaksi extends Component
     {
         ModelsTransaksi::find($id)->delete();
         $this->get_transaksi();
-
     }
 
     private function get_transaksi()
@@ -74,7 +75,7 @@ class Transaksi extends Component
             $this->pegawai != null,
             fn ($q) =>
             $q->where('user_id', $this->pegawai)
-            ->whereMonth('tanggal', date('m', strtotime($this->tanggal)))
+                ->whereMonth('tanggal', date('m', strtotime($this->tanggal)))
         )
             ->with('user')
             ->orderBy('tanggal', 'desc')

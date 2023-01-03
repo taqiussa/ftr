@@ -42,6 +42,8 @@
                     <tr class="text-center">
                         <th>#</th>
                         <th>Tanggal</th>
+                        <th>Dewasa</th>
+                        <th>Anak-anak</th>
                         <th>Jumlah</th>
                         <th>Kupon</th>
                         <th>Total</th>
@@ -53,6 +55,8 @@
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ hariTanggal($transaksi->tanggal) }}</td>
+                        <td class="text-center">{{ $transaksi->dewasa }}</td>
+                        <td class="text-center">{{ $transaksi->anak }}</td>
                         <td class="text-center">{{ $transaksi->jumlah }}</td>
                         <td class="text-center">{{ $transaksi->kupon }}</td>
                         <td>{{ rupiah($transaksi->total) }}</td>
