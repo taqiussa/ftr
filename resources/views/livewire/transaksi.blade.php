@@ -15,18 +15,14 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="harga" class="form-label">Harga</label>
-                <select wire:model="harga" id="harga" class="form-select" >
-                    <option value="">Pilih Harga</option>
-                    <option value="6500">Rp. 6.500,-</option>\
-                    <option value="12000">Rp. 12.000,-</option>
-                </select>
+                <label for="dewasa" class="form-label">Dewasa</label>
+                <input wire:model="dewasa" type="number" class="form-control">
             </div>
         </div>
         <div class="row my-1">
             <div class="col-md-4">
-                <label for="jumlah" class="form-label">Jumlah</label>
-                <input wire:model="jumlah" type="number" class="form-control">
+                <label for="anak" class="form-label">Anak-anak</label>
+                <input wire:model="anak" type="number" class="form-control">
             </div>
             <div class="col-md-4">
                 <label for="kupon" class="form-label">Kupon</label>

@@ -10,8 +10,8 @@ class Transaksi extends Component
 {
     public $tanggal;
     public $pegawai = 1;
-    public $jumlah = 0;
-    public $harga = 0;
+    public $dewasa = 0;
+    public $anak = 0;
     public $kupon = 0;
     public $total = 0;
 
@@ -33,10 +33,10 @@ class Transaksi extends Component
     {
         $this->kupon ?? 0;
         $this->jumlah ?? 0;
-        if ($this->harga == 6500) {
-            $this->total = ($this->jumlah * $this->harga) - ($this->kupon * $this->harga);
+        if ($this->pegawai == 2) {
+            $this->total = ($this->dewasa * 15000) + ($this->anak * 13000);
         } else {
-            $this->total = $this->jumlah * $this->harga;
+            $this->total = ($this->dewasa * 15000) + ($this->anak * 12000);
         }
         $this->get_transaksi();
     }
