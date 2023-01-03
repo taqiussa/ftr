@@ -11,6 +11,7 @@ class Home extends Component
 {
 
     public $bulan;
+    public $tahun;
     public $totalPotong = 0;
     public $totalKupon = 0;
     public $totalLibur = 0;
@@ -28,6 +29,7 @@ class Home extends Component
     public function mount()
     {
         $this->bulan = date('m');
+        $this->tahun = date('Y');
         $this->get_data();
     }
 
@@ -40,23 +42,29 @@ class Home extends Component
     {
         $this->listLibur = Libur::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->get();
         $this->totalLibur = count($this->listLibur);
         $this->listBon =  Bon::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->get();
         $this->totalBon = Bon::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('total');
         $this->totalPemasukan = Transaksi::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('total');
         $this->totalPotong = Transaksi::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('jumlah');
         $this->totalKupon = Transaksi::where('user_id', auth()->user()->id)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('kupon');
-        $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 6500;
+        $this->totalPendapatan = $this->totalPemasukan;
     }
 }

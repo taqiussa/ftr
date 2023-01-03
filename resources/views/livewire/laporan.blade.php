@@ -19,6 +19,14 @@
             </select>
         </div>
         <div class="col-md-6">
+            <label for="tahun" class="form-label">Tahun</label>
+            <select wire:model="tahun" id="tahun" class="form-select">
+                <option value="">Pilih Tahun</option>
+                <option value="{{ date('Y') - 1 }}">{{ date('Y') - 1 }}</option>
+                <option value="{{ date('Y') }}">{{ date('Y') }}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
             <label for="pegawai" class="form-label">Pegawai</label>
             <select wire:model="pegawai" id="pegawai" class="form-select">
                 <option value="1">Pilih Pegawai</option>

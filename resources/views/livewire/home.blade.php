@@ -20,6 +20,14 @@
                 <option value="12">{{ namaBulan(12) }}</option>
             </select>
         </div>
+        <div class="col-md-6">
+            <label for="tahun" class="form-label">Tahun</label>
+            <select wire:model="tahun" id="tahun" class="form-select">
+                <option value="">Pilih Tahun</option>
+                <option value="{{ date('Y') - 1 }}">{{ date('Y') - 1 }}</option>
+                <option value="{{ date('Y') }}">{{ date('Y') }}</option>
+            </select>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>

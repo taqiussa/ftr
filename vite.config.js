@@ -11,8 +11,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: { 
-        https: true, 
-        host: 'localhost', 
-    }, 
+    // server: { 
+    //     https: true, 
+    //     host: 'localhost', 
+    // }, 
 });

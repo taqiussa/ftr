@@ -11,6 +11,7 @@ use Livewire\Component;
 class Laporan extends Component
 {
     public $bulan;
+    public $tahun;
     public $pegawai = 1;
     public $totalPotong = 0;
     public $totalKupon = 0;
@@ -31,6 +32,7 @@ class Laporan extends Component
     public function mount()
     {
         $this->bulan = date('m');
+        $this->tahun = date('Y');
         $this->listPegawai = User::where('username', '!=', 'admin')->get();
     }
 
@@ -39,22 +41,28 @@ class Laporan extends Component
         $this->namaPegawai = User::find($this->pegawai)->name;
         $this->listLibur = Libur::where('user_id', $this->pegawai)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->get();
         $this->totalLibur = count($this->listLibur);
         $this->listBon =  Bon::where('user_id', $this->pegawai)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->get();
         $this->totalBon = Bon::where('user_id', $this->pegawai)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('total');
         $this->totalPemasukan = Transaksi::where('user_id', $this->pegawai)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('total');
         $this->totalPotong = Transaksi::where('user_id', $this->pegawai)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('jumlah');
         $this->totalKupon = Transaksi::where('user_id', $this->pegawai)
             ->whereMonth('tanggal', $this->bulan)
+            ->whereYear('tanggal', $this->tahun)
             ->sum('kupon');
         $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 6500;
     }
