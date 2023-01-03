@@ -64,6 +64,6 @@ class Laporan extends Component
             ->whereMonth('tanggal', $this->bulan)
             ->whereYear('tanggal', $this->tahun)
             ->sum('kupon');
-        $this->totalPendapatan = intval($this->totalPotong + $this->totalKupon) * 6500;
+        $this->totalPendapatan = $this->totalPemasukan;
     }
 }
